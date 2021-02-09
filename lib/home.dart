@@ -8,31 +8,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+    int _selectedIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+    void _onItemTapped(int index) {
+        setState(() {
+            _selectedIndex = index;
+        });
+    }
+
+    final topBar = new AppBar(
+        backgroundColor: new Color(0xfff8faf8),
+        centerTitle: true,
+        elevation: 1.0,
+        leading: new Icon(Icons.camera_alt),
+        title: new Text('Home'),
+        actions: <Widget>[
+            Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Icon(Icons.send),
+            )
+        ],
+    );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text(widget.title),
-        ),
+        appBar: topBar,
         body: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                Text(
-                    'You have pushed the button this many times:',
-                ),
-                Text(
-                    '$_counter',
-                    style: Theme.of(context).textTheme.headline4,
-                ),
+                    Text(
+                        'You have pushed the button this many times:',
+                    ),                
                 ],
             ),
         ),
@@ -44,17 +52,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.business),
-                label: 'Business',
-              ),
-              
+                label: 'Sobre',
+              ),              
             ],
-            currentIndex: 0,
+            currentIndex: _selectedIndex,
             selectedItemColor: Colors.amber[800],
-            //onTap: _onItemTapped,
+            onTap: _onItemTapped,
           ),
         
         floatingActionButton: FloatingActionButton(
-            onPressed: () { Navigator.of(context).pushNamed('/about'); },
+            onPressed: () => Navigator.of(context).pushNamed('/about'),
             tooltip: 'Increment',
             child: Icon(Icons.add),
         ),

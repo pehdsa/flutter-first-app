@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
           '/': (context) => MyHomePage(title: 'Home'),
           '/about': (context) => AboutPage(title: 'Sobre')
       },
-      //home: MyHomePage(title: 'Home')
-      //about: AboutPage(title: 'Sobre')
     );
   }
 }
