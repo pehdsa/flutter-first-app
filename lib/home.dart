@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
+import './components/home_body.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-    int _selectedIndex = 0;
-
-    void _onItemTapped(int index) {
-        setState(() {
-            _selectedIndex = index;
-        });
-    }
+class MyHomePage extends StatelessWidget {
 
     final topBar = new AppBar(
-        backgroundColor: new Color(0xfff8faf8),
+        backgroundColor: new Color(0xfff8faf8),        
         centerTitle: true,
         elevation: 1.0,
         leading: new Icon(Icons.camera_alt),
-        title: new Text('Home'),
+        title: SizedBox(
+            height: 35.0,
+            child: Image.asset("assets/images/insta_logo.png"),
+        ),
         actions: <Widget>[
             Padding(
                 padding: const EdgeInsets.only(right: 12.0),
@@ -30,41 +20,61 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
     );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: topBar,
-        body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                    Text(
-                        'You have pushed the button this many times:',
-                    ),                
-                ],
-            ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.business),
-                label: 'Sobre',
-              ),              
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.amber[800],
-            onTap: _onItemTapped,
-          ),
-        
-        floatingActionButton: FloatingActionButton(
-            onPressed: () => Navigator.of(context).pushNamed('/about'),
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-        ),
-    );
-  }
+    @override
+    Widget build(BuildContext context) {
+        return new Scaffold(
+            appBar: topBar,
+            body: HomeBody(),
+            bottomNavigationBar: new Container(
+                color: Colors.white,
+                height: 60.0,
+                alignment: Alignment.center,                
+                child: new BottomAppBar(
+                    child: SafeArea (
+                        top: false,
+                        bottom: true,
+                        left: false,
+                        right: false,
+                        child: new Row(
+                            // alignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                                new IconButton(
+                                    icon: Icon(
+                                        Icons.home,
+                                    ),
+                                    onPressed: () {},
+                                ),
+                                new IconButton(
+                                    icon: Icon(
+                                        Icons.search,
+                                    ),
+                                    onPressed: null,
+                                ),
+                                new IconButton(
+                                    icon: Icon(
+                                        Icons.add_box,
+                                    ),
+                                    onPressed: null,
+                                ),
+                                new IconButton(
+                                    icon: Icon(
+                                        Icons.favorite,
+                                    ),
+                                    onPressed: null,
+                                ),
+                                new IconButton(
+                                    icon: Icon(
+                                        Icons.account_box,
+                                    ),
+                                    onPressed: null,
+                                ),
+                            ],
+                        ),                        
+                    ),
+                ),
+            )
+        );
+    }
+
 }

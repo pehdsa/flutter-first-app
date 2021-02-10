@@ -8,13 +8,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      theme: ThemeData(        
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      theme: ThemeData(    
+        brightness: Brightness.light,    
+        primaryColor: Colors.black,
+        primaryIconTheme: IconThemeData(
+            color: Colors.black
+        ),
+        primaryTextTheme: TextTheme(
+            title: TextStyle(
+                color: Colors.black,
+                fontFamily: "Aveny"
+            )
+        ),
+        textTheme: TextTheme(
+            title: TextStyle(
+                color: Colors.black
+            )
+        )
       ),
       initialRoute: '/',
       routes: {
-          '/': (context) => MyHomePage(title: 'Home'),
+          '/': (context) => MyHomePage(),
           '/about': (context) => AboutPage(title: 'Sobre')
       },
     );
