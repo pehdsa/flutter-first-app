@@ -11,7 +11,7 @@ class InstaList extends StatelessWidget {
             itemCount: 5,
             itemBuilder: (context, index) => index == 0 ? 
               SizedBox(
-                height: deviceSize.height * 0.15,
+                height: deviceSize.height * 0.2,
                 child: InstaStories(),
               ) : Column(),
         );
